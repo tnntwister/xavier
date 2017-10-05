@@ -1,5 +1,7 @@
-# xavier
+# Xavier
 a node tool to convert vcard files into printable PDFs
+
+in development, don't use it for now.
 
 ### Dependancies
 
