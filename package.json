@@ -1,15 +1,22 @@
 {
-  "name": "Xavier",
-  "version": "1.0.0",
+  "name": "xavier",
+  "version": "0.1.0",
   "description": "a node tool to convert vcard files into printable PDFs",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "watch": "watchify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d -v"
   },
-  "author": "",
+  "author": "François-Xavier Guillois <fxguillois@lilo.org>",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^7.3.0",
+    "json-fetch": "^7.3.0",
     "pdfmake": "^0.1.33",
     "vcard-js": "^1.2.2"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
   }
 }

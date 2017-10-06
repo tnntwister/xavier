@@ -1,6 +1,5 @@
 "use strict";
 
-const util = require('util');
 const vCard = require('vcard-js');
 
 const fonts = {
@@ -46,11 +45,11 @@ vCard.readFile("./data/personal/Contacts-2017-10-06.vcf", function(err, json) {
 	};
 	
 	// sort by category
-	json.forEach(function(vCard, i){
+	json.forEach(function(vCard){
 		var vCardJ = vCard.toJSON();
 		var vCardItems = vCardJ[1];
 		
-		vCardItems.forEach(function(value, index){
+		vCardItems.forEach(function(value){
 			if(value[0] === 'categories' && !body.has(value[3])){				
 				body.set(value[3], []);
 			}
@@ -73,19 +72,18 @@ vCard.readFile("./data/personal/Contacts-2017-10-06.vcf", function(err, json) {
 
 		row.push(headers);
 
-		json.forEach(function(vCard, i){
+		json.forEach(function(vCard){
 			var vCardJ = vCard.toJSON();
 			var vCardItems = vCardJ[1];
 			var values = ['','','','']; // nom email tél adresse
-			var cat_row = vCardItems.find(function(vci, vcii){
-				if (vci[0] === 'categories')
-					return true;
+			var cat_row = vCardItems.find(function(vci){
+				return (vci[0] === 'categories');
 			}); 
 			if (cat_row !== undefined && cat_row[3] !== cat){
 				return false;
 			}
 			
-			vCardItems.forEach(function(value, index){
+			vCardItems.forEach(function(value){
 				// console.log(value);
 				if (['fn'].indexOf(value[0]) !== -1 && value[3] !== undefined){
 					values[0] = value[3];					
