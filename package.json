@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pdfjs": "^2.0.0-alpha.3",
     "pdfmake": "^0.1.33",
     "vcard-js": "^1.2.2"
   }
