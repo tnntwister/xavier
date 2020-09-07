@@ -1,6 +1,16 @@
 "use strict";
-
 const vCard = require('vcard-js');
+
+var myArgs = process.argv.slice(2);
+console.log('myArgs: ', myArgs);
+
+const { Magneto, Xavier } = require("./src/xavier.js");
+
+const magnet = new Magneto();
+const fx = new Xavier();
+
+/*
+var Xavier = require('./src/xavier');
 
 const fonts = {
 	Roboto: {
@@ -14,8 +24,10 @@ const fonts = {
 const PdfPrinter = require('./node_modules/pdfmake/src/printer');
 const printer = new PdfPrinter(fonts);
 const fs = require('fs');
+const vcfPath = './data/personal/Contacts-2017-10-06.vcf';
 
-vCard.readFile("./data/personal/Contacts-2017-10-06.vcf", function(err, json) {
+
+vCard.readFile(vcfPath, function(err, json) {
 	var body = new Map();
 	var docDefinition = {
 		content: [],
@@ -110,7 +122,12 @@ vCard.readFile("./data/personal/Contacts-2017-10-06.vcf", function(err, json) {
 	// console.log(body);
 
 	body.forEach(function(row, cat){
-		docDefinition.content.push({text: cat, fontSize: 14, bold: true, /*pageBreak: 'before',*/ margin: [0, 0, 0, 8]});
+		docDefinition.content.push({
+			text: cat, 
+			fontSize: 14, 
+			bold: true, 
+			//pageBreak: 'before', 
+			margin: [0, 0, 0, 8]});
 		docDefinition.content.push({
 			style: 'tableExample',
 			color: '#444',
@@ -128,5 +145,5 @@ vCard.readFile("./data/personal/Contacts-2017-10-06.vcf", function(err, json) {
 	pdfDoc.end();
 
 
-});
+}); */
 

@@ -1,0 +1,1 @@
+process.argv = ['node', 'jest', './data/personal/Contacts-2017-10-06.vcf', 'arg2'];
