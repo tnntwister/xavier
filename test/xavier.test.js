@@ -12,7 +12,19 @@ test('Map vide quand tableau vide', () => {
 const magnet = new Magneto();
 const fx = new Xavier();
 
-test('first arg is a real path', () => {
+
+test('the vcf file path has the right extension', () => {
     magnet.setVcfPath();
-    expect(magnet.getVcfPath()).toBe(3);
+    // test si le fichier fourni a une extension vcf
+    expect(magnet.getVcfPath()).toMatch(/[.]vcf$/);;
+  });
+
+  test('the vcf file path isnt defined', () => {
+    magnet.args = []
+    expect(() => { magnet.setVcfPath() }).toThrow(Error);
+  });
+
+  test('the vcf file path is build', () => {
+    magnet.buildVcfPath();
+    expect(magnet.vcfPath).toMatch(/\.?\.?\/[^\r\n]+\/[a-z]{1,}\.vcf/);
   });
