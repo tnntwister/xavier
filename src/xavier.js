@@ -116,20 +116,28 @@ class Xavier
                 
                 vCardItems.forEach(function(value){
                     if(value[0] === 'categories' && !body.has(value[3])){				
-                        body.set(value[3], []);
+                        if (value[3].indexOf(',') == -1){
+                            body.set(value[3], []);
+                        } else {
+                            const moreCats = value[3].split(',')
+                            for(const moreCat of moreCats){
+                                body.set(moreCat, []);
+                            }
+                        }
+                        
                     }
                 });		
             });
         
             body.forEach(function(row, cat){
                 var headers;
-        
                 switch(cat){
                     case 'Amis':
                     case 'Travail':
                     case 'professionnels':
                     case 'Jeux':
                     case 'Famille':
+                    case 'XR':
                     default:
                         headers = ['Nom', 'Email', 'Tél', 'Adresse'];
                         break; 
@@ -144,9 +152,11 @@ class Xavier
                     var cat_row = vCardItems.find(function(vci){
                         return (vci[0] === 'categories');
                     }); 
-                    if (cat_row !== undefined && cat_row[3] !== cat){
+                    if ((cat_row !== undefined && cat_row[3] !== cat) || cat_row === undefined ){
                         return false;
                     }
+
+                    //console.log(cat_row)
                     
                     vCardItems.forEach(function(value){
                         // console.log(value);

@@ -1,5 +1,5 @@
 const xavierConfig = {
-    defaultDirectory:'C:/Users/fxgui/Documents/'
+    defaultDirectory:'/Users/yourname/Documents/'
 }
 
 module.exports = xavierConfig
